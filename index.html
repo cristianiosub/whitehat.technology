@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WHITE HAT TECHNOLOGY</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background-color: #000;
+      color: #00ff00;
+      font-family: monospace;
+      margin: 0;
+      padding: 0;
+    }
+    #console {
+      width: 750px;
+      max-width: 90vw;
+      margin: 20px auto;
+      font-size: 14px;
+      line-height: 1.4em;
+      white-space: pre-wrap;
+    }
+    .ok { color: #00ff00; }
+    .info { color: #00bfff; }
+    .user { color: #00ff00; }
+    .host { color: #ff0096; }
+    .prompt { color: #00ffff; }
+    .fingerprint { color: #ffff00; }
+    .cursor-blink {
+      display: inline-block;
+      color: #00ffff;
+      animation: blink 1s steps(1) infinite;
+    }
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+    a { color: #0bc; text-decoration: none; }
+  </style>
+  
+<!-- -->
+<script type="text/javascript">
+var sc_project=13170791; 
+var sc_invisible=1; 
+var sc_security="ba68384b"; 
+</script>
+<script type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js"
+async></script>
+<noscript><div class="statcounter"><a title=""
+href="https://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="https://c.statcounter.com/13170791/0/ba68384b/1/"
+alt=""
+referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+<!-- -->  
+
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="White Hat" />
+<link rel="manifest" href="/site.webmanifest" />
+
+</head>
+<body>
+<div id="console"></div>
+
+<script>
+  const getTimestamp = () => {
+    const now = new Date();
+    return `[${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}]`;
+  };
+
+  const getBatteryInfo = async () => {
+    try {
+      const battery = await navigator.getBattery();
+      return `${Math.round(battery.level * 100)}% (${battery.charging ? "Charging" : "Not Charging"})`;
+    } catch {
+      return "Unavailable";
+    }
+  };
+
+  async function runTerminal() {
+    const ipData = await fetch("https://ipapi.co/json/").then(r => r.json()).catch(() => ({}));
+    const ip = ipData.ip || "Unknown";
+    const isp = ipData.org || ipData.asn || "Unknown";
+    const platform = navigator.platform;
+    const ram = navigator.deviceMemory || "?";
+    const cores = navigator.hardwareConcurrency || "?";
+    const conn = navigator.connection || {};
+    const connection = conn.effectiveType || "Unknown";
+    const downlink = conn.downlink || "?";
+    const battery = await getBatteryInfo();
+
+    const lines = [];
+    lines.push(`<span class='user'>whitehat</span><span class='host'>@technology</span><span class='prompt'>:~$</span> initializing secure session...`);
+    lines.push(`${getTimestamp()} <span class='info'>[INFO]</span> IP address: ${ip}`);
+    lines.push(`${getTimestamp()} <span class='info'>[INFO]</span> Platform: ${platform}`);
+    lines.push(`${getTimestamp()} <span class='info'>[INFO]</span> RAM: ${ram}GB | CPU: ${cores} cores`);
+    lines.push(`${getTimestamp()} <span class='info'>[INFO]</span> Connection: ${connection} / ${downlink} Mbps`);
+    lines.push(`${getTimestamp()} <span class='info'>[INFO]</span> Battery: ${battery}`);
+    lines.push(`${getTimestamp()} <span class='info'>[INFO]</span> ISP: ${isp}`);
+    lines.push(`${getTimestamp()} <span class='ok'>[OK]</span> Establishing encrypted channel`);
+    lines.push(`${getTimestamp()} <span class='ok'>[OK]</span> TLS 1.3 handshake complete`);
+    lines.push(`${getTimestamp()} <span class='ok'>[OK]</span> Session fingerprint: <span class='fingerprint'>0xA3F7C1E8</span>`);
+    lines.push(`${getTimestamp()} <span class='ok'>[OK]</span> Connection secured. Proceeding with system access...`);
+    lines.push("");
+    lines.push(`<span class='user'>whitehat</span><span class='host'>@technology</span><span class='prompt'>:~$</span> cat security.txt`);
+    lines.push("<br>");
+    lines.push(`Hi, we are <a href='https://whitehat.technology'><strong>WHITE HAT TECHNOLOGY</strong></a>, a Romanian cybersecurity company focused on Offensive Security, Penetration Testing, Physical Security Audit and IT audits.`);
+    lines.push("<br>");
+    lines.push(`We simulate real attacks to find the weak spots in your infrastructure before someone else does. We’ve worked with <strong>public sector</strong> organizations, private companies, and international partners that needed real insights—not just checklists.`);
+    lines.push("<br>");
+    lines.push(`From phishing simulations and vulnerability scanning to full-stack app testing and policy development, we dig deep and think like attackers so you can stay one step ahead.`);
+    lines.push("<br>");
+    lines.push(`No buzzwords. No bullshit. Just security that actually works.`);
+    lines.push("<br>");
+  	lines.push(`Curious to see how we could collaborate? <strong>Let's meet for a coffee and discuss some amazing ideas.</strong>`);
+    lines.push("<br>");
+    lines.push(`White Hat Technology is a registered active economic operator on Romania’s public procurement platform e-licitatie.ro (S.E.A.P.), which allows public institutions to directly contract our services under Romanian procurement law.`);
+    lines.push("<br>");
+    lines.push(`If you represent a public authority and wish to work with us via S.E.A.P., you can reach out for details regarding offers, procurement process, and service availability.`);
+    lines.push("<br>");
+    lines.push(`<strong>Entity details:</strong>`);
+    lines.push("<br>");
+    lines.push(`■ Name: WHITE HAT TECHNOLOGY S.R.L.`);
+    lines.push(`◆ Location: Bucharest, Romania`);
+    lines.push(`✎ Address: 27-33 Nerva Traian street, entrance B, office #6, 3rd district`);
+    lines.push(`◎ Company ID (VAT number): RO 44549761`);
+    lines.push(`✉ Email: <a href='mailto:contact@whitehat.technology'>contact@whitehat.technology</a>`);
+    lines.push(`☎ Phone: <a href='tel:+40723444825'>+40 723 444 825</a>`);
+    lines.push("<br>");
+    lines.push(`<span class='user'>whitehat</span><span class='host'>@technology</span><span class='prompt'>:~$</span> <span class="cursor-blink">_</span>`);
+
+    const container = document.getElementById("console");
+    let i = 0;
+    function printNext() {
+      if (i < lines.length) {
+        const line = document.createElement("div");
+        line.innerHTML = lines[i];
+        container.appendChild(line);
+        window.scrollTo(0, document.body.scrollHeight);
+        i++;
+        setTimeout(printNext, 70 + Math.random() * 80);
+      }
+    }
+    printNext();
+  }
+
+  runTerminal();
+</script>
+</body>
+</html>
